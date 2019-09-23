@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   aa.c                                               :+:      :+:    :+:   */
+/*   bitwise.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkhribec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/22 18:27:44 by nkhribec          #+#    #+#             */
-/*   Updated: 2019/09/23 00:06:39 by nkhribec         ###   ########.fr       */
+/*   Created: 2019/09/24 00:28:20 by nkhribec          #+#    #+#             */
+/*   Updated: 2019/09/24 00:28:24 by nkhribec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ unsigned char	swapb(unsigned char c)
 
 unsigned char		reversebbb(unsigned char c)
 {
-	return ((((c & (1 << 0)) << 7) | (((c & (1 << 7))) >> 7)) |\
+	/*return ((((c & (1 << 0)) << 7) | (((c & (1 << 7))) >> 7)) |\
 		(((c & (1 << 1)) << 5) | (((c & (1 << 6))) >> 5)) |\
 		(((c & (1 << 2)) << 3) | (((c & (1 << 5))) >> 3)) |\
-		(((c & (1 << 3)) << 1) | (((c & (1 << 4))) >> 1)));
-/*	unsigned char	ret;
+		(((c & (1 << 3)) << 1) | (((c & (1 << 4))) >> 1)));*/
+	unsigned char	ret;
 	int				i;
 	int				n;
 
@@ -40,8 +40,7 @@ unsigned char		reversebbb(unsigned char c)
 		ret |= (((c & (1 << i)) <<  n) | ((c & (1 << (7 - i))) >>  n));
 		n -= 2;
 	}
-	printb(ret);
-	return (ret);*/
+	return (ret);
 }
 
 void			printb(unsigned char c)
@@ -53,7 +52,7 @@ void			printb(unsigned char c)
 	while (--i > -1)
 	{
 		m = (((c & (1 << i)) >> i) + '0');
-		write(1, &m, 8);
+		write(1, &m, 1);
 	}
 	write(1, "\n", 1);
 }
@@ -78,10 +77,4 @@ int				main()
 	printb(c3);
 	m = reversebbb(c3);
 	printb(m);
-	//printf("%d", 5);
-	//printb(swapb(c));
-	//m = swapb(c);
-	//m = reverseb(m);
-	//printf("%hhu\n", m);
-	//printb(m);
 }
